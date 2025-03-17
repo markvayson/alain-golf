@@ -4,7 +4,7 @@ type InitialData = {
   email: string;
 };
 
-export const { POST } = serve<InitialData>(async (context) => {
+export const { POST } = serve<InitialData>(async (context: any) => {
   const { email } = context.requestPayload;
 
   await context.run("new-signup", async () => {
