@@ -7,7 +7,6 @@ import Header from "@/components/Header";
 const Page = async () => {
   const result = await db.select().from(users);
   const session = await auth();
-  console.log(JSON.stringify(result, null, 2));
   return (
     <>
       <Header session={session} />
