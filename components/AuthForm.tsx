@@ -50,8 +50,9 @@ const AuthForm = <T extends FieldValues>({
 
   const handleSubmit: SubmitHandler<T> = async (data) => {
     const result = await onSubmit(data);
-
+    console.log("Handle Submit");
     if (result.success) {
+      console.log("success");
       toast({
         title: "Success",
         description: isSignIn
@@ -61,6 +62,7 @@ const AuthForm = <T extends FieldValues>({
 
       router.push("/");
     } else {
+      console.log("fail");
       toast({
         title: `Error ${isSignIn ? "signing in" : "signing up"}`,
         description: result.error ?? "An error occurred.",
@@ -117,7 +119,7 @@ const AuthForm = <T extends FieldValues>({
             />
           ))}
 
-          <Button type="submit" className="form-btn">
+          <Button type="submit" className="form-btn cursor-pointer">
             {isSignIn ? "Sign In" : "Sign Up"}
           </Button>
         </form>

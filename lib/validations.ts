@@ -5,7 +5,6 @@ export const signUpSchema = z.object({
   email: z.string().email(),
   ghinNumber: z.coerce.number(),
   password: z.string().min(8),
-  userPhoto: z.string().nonempty("Photo is required"),
 });
 
 export const signInSchema = z.object({
