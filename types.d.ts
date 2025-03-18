@@ -16,5 +16,4 @@ interface AuthCredentials {
   email: string;
   password: string;
   ghinNumber: number;
-  userPhoto: string;
 }

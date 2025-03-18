@@ -14,7 +14,6 @@ const Page = () => (
       password: "",
       fullName: "",
       ghinNumber: 0,
-      userPhoto: "",
     }}
     onSubmit={signUp}
   />
