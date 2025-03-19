@@ -1,20 +1,18 @@
-import { Session } from "next-auth";
 import React from "react";
 import Hero from "./Hero";
+import { golfClubSections } from "@/app/constants";
+import ContentSection from "./ContentSection";
+import Courses from "./Courses";
+import Divider from "./Divider";
 import Membership from "./Membership";
-import Contact from "./Contact";
-import Team from "./Team";
-import Content from "./Content";
 import Footer from "./Footer";
 
 const LandingPage = () => {
   return (
     <>
       <Hero />
-      <Content />
+      <Courses />
       <Membership />
-      <Team />
-      <Contact />
       <Footer />
     </>
   );

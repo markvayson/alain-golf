@@ -134,3 +134,55 @@ export const FIELD_TYPES = {
   ghinNumber: "number",
   password: "password",
 };
+
+export const golfButtons = [
+  { label: "Check Tee Time Availability", isDialog: true },
+  { label: "Join Events", isDialog: true },
+  { label: "Green Fee Rates", isDialog: true },
+  { label: "Lesson Rates", isDialog: true },
+  { label: "Become a Member", isDialog: true },
+];
+
+export const golfClubSections: SectionProps[] = [
+  {
+    title: "⛳ 18-Hole Championship Course",
+    description:
+      "Play on our beautifully designed 18-hole championship course, with options for a full round or a quick 9-hole game. Carts and walking options available.",
+    checklist: [
+      "18-hole & 9-hole options",
+      "Carts or walking available",
+      "Members & guests welcome",
+      "Tee times available online",
+      "Play casually or competitively",
+      "Scenic course views",
+      "Golf restaurant available",
+    ],
+  },
+  {
+    title: "🎯 9-Hole Par 3 Academy Course",
+    description:
+      "A beginner-friendly short course designed for learning and improving precision. Open to all skill levels, our Par 3 series is a fun and low-pressure way to enjoy the game.",
+
+    checklist: [
+      "For all skill levels",
+      "Handful Events",
+      "Rent clubs if needed",
+      "Learn golf etiquette",
+      "Guided play available",
+    ],
+  },
+  {
+    title: "🏌️‍♂️ Driving Range",
+    description:
+      "Practice your long game and work on your swing at our outdoor driving range. Open to everyone, no reservations required.",
+
+    checklist: [
+      "Open to members & guests",
+      "Solo or group practice",
+      "Target-based sessions",
+      "Balls available at range",
+      "Coaching services offered",
+      "Improve distance & accuracy",
+    ],
+  },
+];

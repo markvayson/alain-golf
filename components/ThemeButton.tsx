@@ -1,48 +1,77 @@
-import { transitionVariants } from "@/app/constants/transitions";
-import React from "react";
-import { AnimatedGroup } from "./motion-primitives/animated-group";
-import { Button } from "./ui/button";
 import Link from "next/link";
+import { Button } from "./ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import { IKImage } from "imagekitio-next";
+import config from "@/lib/config";
+import RenderImage from "./RenderImage";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import ImageDownload from "./ImageDownload";
 
-const ThemeButton = ({
-  className,
-  text,
-  link,
-}: {
+const {
+  env: {
+    imagekit: { urlEndpoint },
+  },
+} = config;
+
+interface ButtonProps {
+  label: string;
+  link?: string;
   className?: string;
-  text: string;
-  link: string;
-}) => {
+  variant?:
+    | "link"
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | null
+    | undefined;
+  isDialog?: boolean;
+  image?: string;
+}
+const ThemeButton = ({
+  label,
+  link = "",
+  variant = "default",
+  className,
+  isDialog = false,
+  image,
+}: ButtonProps) => {
   return (
-    <AnimatedGroup
-      variants={{
-        container: {
-          visible: {
-            transition: {
-              staggerChildren: 0.05,
-              delayChildren: 0.75,
-            },
-          },
-        },
-        ...transitionVariants,
-      }}
-      className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
-    >
-      <div
-        key={1}
-        className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5"
-      >
-        <Button
-          asChild
-          size="lg"
-          className={`${className} rounded-xl px-5 text-base`}
-        >
-          <Link href={link}>
-            <span className="text-nowrap">{text}</span>
-          </Link>
+    <>
+      {isDialog ? (
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant={variant} className={className}>
+              {label}
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="z-100 sm:max-w-md max-h-[95vh] h-full bg-white flex flex-col ">
+            <VisuallyHidden>
+              <DialogHeader>
+                <DialogTitle>{label}</DialogTitle>
+              </DialogHeader>
+            </VisuallyHidden>
+
+            <RenderImage url={urlEndpoint} alt={label} path={image} />
+            <DialogFooter>
+              <ImageDownload url={urlEndpoint} name={image} />
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      ) : (
+        <Button asChild variant={variant} className={className}>
+          <Link href={link}>{label}</Link>
         </Button>
-      </div>
-    </AnimatedGroup>
+      )}
+    </>
   );
 };
 

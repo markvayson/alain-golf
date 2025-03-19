@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import ThemeButton from "./ThemeButton";
+import Divider from "./Divider";
 
 export const Membership = () => {
   const membership = {
@@ -52,7 +53,7 @@ export const Membership = () => {
   };
 
   return (
-    <section id="membership" className="py-16 md:py-32">
+    <section id="membership" className="py-16 md:py-32 bg-green-200 relative">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl space-y-6 md:text-center ">
           <h1 className="text-center text-4xl font-semibold lg:text-5xl">
@@ -99,6 +100,7 @@ export const Membership = () => {
           ))}
         </div>
       </div>
+      <Divider className="fill-white" />
     </section>
   );
 };
