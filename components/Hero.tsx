@@ -4,13 +4,11 @@ import { Button } from "@/components/ui/button";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
 import ThemeButton from "./ThemeButton";
-import Image from "next/image";
-import HeroSectionBackground from "@/public/images/HeroSectionBackground.webp";
 
 export const Hero = async () => {
   return (
     <>
-      <main className="overflow-hidden">
+      <main className="overflow-hidden bg-linear-to-b from-green-200 via-emerald-400 to-teal-600">
         <div
           aria-hidden
           className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block"
@@ -20,15 +18,6 @@ export const Hero = async () => {
           <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
         </div>
         <section className="h-[100vh] relative">
-          <Image
-            alt="HeroSectionBackground"
-            src={HeroSectionBackground}
-            fill
-            placeholder="blur"
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
           <div className="relative pt-32 md:pt-36 ">
             <div className="mx-auto ">
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0 bg-linear-to-b rounded-xl via-black/30  py-2">
