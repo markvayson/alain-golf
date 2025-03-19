@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import { golfClubSections } from "@/app/constants";
 import ContentSection from "./ContentSection";
 import Courses from "./Courses";
-import Divider from "./Divider";
+import Divider from "./dividers/CourseDivider";
 import Membership from "./Membership";
 import Footer from "./Footer";
 

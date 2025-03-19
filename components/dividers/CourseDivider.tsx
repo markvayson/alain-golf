@@ -1,6 +1,6 @@
 import React from "react";
 
-const Divider = ({ className }: { className?: string }) => {
+const CourseDivider = ({ className }: { className?: string }) => {
   return (
     <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0 rotate-180">
       <svg
@@ -19,4 +19,4 @@ const Divider = ({ className }: { className?: string }) => {
   );
 };
 
-export default Divider;
+export default CourseDivider;

@@ -6,7 +6,7 @@ import { Card, CardContent } from "./ui/card";
 import { CheckCheck } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
-import Divider from "./Divider";
+import CourseDivider from "./dividers/CourseDivider";
 
 const Courses = () => {
   const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
@@ -54,7 +54,7 @@ const Courses = () => {
           </CarouselContent>
         </Carousel>
       </div>
-      <Divider className="fill-green-200" />
+      <CourseDivider className="fill-green-200" />
     </section>
   );
 };

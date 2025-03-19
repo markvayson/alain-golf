@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import ThemeButton from "./ThemeButton";
-import Divider from "./Divider";
+import Divider from "./dividers/CourseDivider";
 
 export const Membership = () => {
   const membership = {

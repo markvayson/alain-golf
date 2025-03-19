@@ -39,7 +39,7 @@ export const Header = ({ session }: { session: Session | null }) => {
             "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 border-black/50  lg:px-12 ",
             isScrolled
               ? "bg-background/50 max-w-4xl rounded-2xl border  backdrop-blur-sm lg:px-5"
-              : "text-white bg-gradient-to-b from-black/30 rounded-md"
+              : "bg-gradient-to-b from-black/10 rounded-md"
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">

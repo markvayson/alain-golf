@@ -1,14 +1,13 @@
 import React from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
-import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
 import ThemeButton from "./ThemeButton";
+import HeroDivider from "./dividers/HeroDivider";
 
 export const Hero = async () => {
   return (
     <>
-      <main className="overflow-hidden bg-linear-to-b from-white to-teal-600">
+      <main className="overflow-hidden bg-linear-to-b px-2  from-teal-300 via-green-300 to-green-300 relative">
+        <HeroDivider />
         <div
           aria-hidden
           className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block"
@@ -20,32 +19,40 @@ export const Hero = async () => {
         <section className="h-[100vh] relative">
           <div className="relative pt-32 md:pt-36 ">
             <div className="mx-auto ">
-              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0 bg-linear-to-b rounded-xl via-black/30  py-2">
-                <TextEffect
-                  preset="fade-in-blur"
-                  speedSegment={0.3}
-                  as="h1"
-                  className="mt-4 font-extrabold text-balance  text-6xl md:text-7xl lg:mt-8 xl:text-[5.25rem] text-white"
-                >
-                  Welcome to Al Ain Golf Club
-                </TextEffect>
-
+              <div className="max-sm:pl-5 md:text-center sm:mx-auto lg:mr-auto lg:mt-0  rounded-xl  py-2">
+                <div className="relative">
+                  <TextEffect
+                    preset="fade-in-blur"
+                    speedSegment={0.1}
+                    as="h1"
+                    className="absolute -left-2 md:left-0 right-0 -top-10 md:-top-18  font-black md:font-extrabold  tracking-tighter text-black/20 text-8xl md:text-9xl thread "
+                  >
+                    AESGC
+                  </TextEffect>
+                  <TextEffect
+                    preset="fade-in-blur"
+                    speedSegment={0.3}
+                    as="h1"
+                    className=" mt-4 font-black md:font-extrabold text-7xl/16 thread lg:mt-8 xl:text-[5.25rem] "
+                  >
+                    Al Ain Golf Club
+                  </TextEffect>
+                </div>
                 <TextEffect
                   per="line"
                   preset="fade-in-blur"
                   speedSegment={0.3}
                   delay={0.5}
                   as="p"
-                  className="mx-auto mt-6 max-w-2xl text-balance text-lg  grad rounded-xl font-medium  text-white"
+                  className="mx-auto mt-12 max-w-2xl text-balance md:text-lg grad rounded-xl   "
                 >
                   A scenic 18-hole course set against the stunning backdrop of
                   Jebel Hafeet. Known for its welcoming atmosphere and
                   well-maintained greens, it’s a great spot for golfers of all
                   levels to enjoy a round, practice, or join tournaments.
                 </TextEffect>
-
                 <ThemeButton
-                  className="mt-12"
+                  className="mt-12 rounded-full "
                   label="Book Tee Time"
                   link="/sign-up"
                 />
