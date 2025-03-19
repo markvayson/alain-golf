@@ -8,7 +8,7 @@ import ThemeButton from "./ThemeButton";
 export const Hero = async () => {
   return (
     <>
-      <main className="overflow-hidden bg-linear-to-b from-green-200 via-emerald-400 to-teal-600">
+      <main className="overflow-hidden bg-linear-to-b from-white to-teal-600">
         <div
           aria-hidden
           className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block"
