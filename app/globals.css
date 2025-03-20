@@ -122,7 +122,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-teal-300 text-foreground;
+    @apply bg-background text-foreground;
   }
 }
 
@@ -136,6 +136,13 @@
 }
 
 @layer components {
+  .gradient-primary {
+    @apply bg-gradient-to-r  from-teal-400 to-green-400;
+  }
+  .gradient-btn {
+    @apply bg-gradient-to-r  from-green-400 to-green-500 text-white hover:to-green-400 cursor-pointer;
+  }
+
   .root-container {
     @apply flex min-h-screen flex-1 flex-col  sm:px-10 md:px-16;
   }

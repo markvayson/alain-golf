@@ -1,3 +1,6 @@
+import { Facebook, Instagram, Logo, WhatsApp } from "@/components/Svg";
+import { JSX, ReactNode } from "react";
+
 export const sampleEvents = [
   {
     id: 1,
@@ -126,6 +129,14 @@ export const FIELD_NAMES = {
   email: "Email",
   ghinNumber: "Ghin Number",
   password: "Password",
+};
+
+export const CONTACT_FIELD_NAMES = {
+  firstName: "First name",
+  lastName: "Last name",
+  email: "Email",
+  phoneNumber: "Phone Number",
+  comment: "Comment",
 };
 
 export const FIELD_TYPES = {

@@ -2,11 +2,22 @@ import React from "react";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import ThemeButton from "./ThemeButton";
 import HeroDivider from "./dividers/HeroDivider";
+import { TextShimmer } from "./motion-primitives/text-shimmer";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { Dialog } from "./ui/dialog";
+import SignButton from "./SignButton";
 
 export const Hero = async () => {
   return (
     <>
-      <main className="overflow-hidden bg-linear-to-b px-2  from-teal-300 via-green-300 to-green-300 relative">
+      <main className="overflow-hidden bg-linear-to-b px-2  relative">
         <HeroDivider />
         <div
           aria-hidden
@@ -19,24 +30,22 @@ export const Hero = async () => {
         <section className="h-[100vh] relative">
           <div className="relative pt-32 md:pt-36 ">
             <div className="mx-auto ">
-              <div className="max-sm:pl-5 md:text-center sm:mx-auto lg:mr-auto lg:mt-0  rounded-xl  py-2">
-                <div className="relative">
+              <div className="text-center sm:mx-auto   lg:mr-auto lg:mt-0  rounded-xl  p-2">
+                <div className="relative flex gap-2 items-center justify-center">
                   <TextEffect
                     preset="fade-in-blur"
                     speedSegment={0.1}
                     as="h1"
-                    className="absolute -left-2 md:left-0 right-0 -top-10 md:-top-18  font-black md:font-extrabold  tracking-tighter text-black/20 text-8xl md:text-9xl thread "
+                    className="absolute -left-2 -z-10 md:left-0 right-0 -top-0   font-black md:font-extrabold  tracking-tighter text-black/5 md:text-black/10 text-8xl md:text-9xl thread "
                   >
                     AESGC
                   </TextEffect>
-                  <TextEffect
-                    preset="fade-in-blur"
-                    speedSegment={0.3}
-                    as="h1"
-                    className=" mt-4 font-black md:font-extrabold text-7xl/16 thread lg:mt-8 xl:text-[5.25rem] "
-                  >
-                    Al Ain Golf Club
-                  </TextEffect>
+                  <h1 className=" mt-4 font-medium md:font-normal tracking-tighter text-5xl/16 md:text-[5.5rem]/16 lg:mt-8 ">
+                    <span className="text-transparent bg-clip-text  whitespace-nowrap gradient-primary ">
+                      Al Ain
+                    </span>{" "}
+                    Golf Club
+                  </h1>
                 </div>
                 <TextEffect
                   per="line"
@@ -44,17 +53,15 @@ export const Hero = async () => {
                   speedSegment={0.3}
                   delay={0.5}
                   as="p"
-                  className="mx-auto mt-12 max-w-2xl text-balance md:text-lg grad rounded-xl   "
+                  className="mx-auto mt-6 md:mt-12 text-center text-base text-balance text-black/80 md:text-xl grad rounded-xl   "
                 >
-                  A scenic 18-hole course set against the stunning backdrop of
-                  Jebel Hafeet. Known for its welcoming atmosphere and
-                  well-maintained greens, it’s a great spot for golfers of all
-                  levels to enjoy a round, practice, or join tournaments.
+                  A hidden gem in the UAE, set against Jebel Hafeet, with
+                  something for golfers and non-golfers alike.
                 </TextEffect>
-                <ThemeButton
-                  className="mt-12 rounded-full "
+                <SignButton
+                  type="SIGN_IN"
                   label="Book Tee Time"
-                  link="/sign-up"
+                  className="mt-12"
                 />
               </div>
             </div>
