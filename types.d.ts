@@ -29,3 +29,13 @@ interface GolfButtonProps {
   isDialog: boolean;
   link?: string;
 }
+
+interface Rate {
+  id: string;
+  courseType: string;
+  category: string;
+  weekday9h: number;
+  weekday18h: number;
+  weekend9h: number;
+  weekend18h: number;
+}

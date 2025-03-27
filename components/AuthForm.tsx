@@ -25,7 +25,6 @@ import Link from "next/link";
 import { FIELD_NAMES } from "@/app/constants";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
-import ImageUpload from "./ImageUpload";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -72,15 +71,7 @@ const AuthForm = <T extends FieldValues>({
   };
 
   return (
-    <div className="flex flex-col gap-6 ">
-      <h1 className="text-2xl font-semibold text-white">
-        {isSignIn ? "Welcome to Al Ain Golf Club!" : "Create your Account"}
-      </h1>
-      <p className="text-light-100">
-        {isSignIn
-          ? "Access now to book a tee time, and stay updated."
-          : "Please complete all fields to gain access to the golf booking."}
-      </p>
+    <div className="flex flex-col gap-6  w-full">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
@@ -97,21 +88,15 @@ const AuthForm = <T extends FieldValues>({
                     {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                   </FormLabel>
                   <FormControl>
-                    {field.name === "userPhoto" ? (
-                      <ImageUpload onFileChange={field.onChange} />
-                    ) : (
-                      <Input
-                        required
-                        type={
-                          FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]
-                        }
-                        placeholder={
-                          FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]
-                        }
-                        {...field}
-                        className="form-input"
-                      />
-                    )}
+                    <Input
+                      required
+                      type={FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
+                      placeholder={`Enter your ${
+                        FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]
+                      } here`}
+                      {...field}
+                      className="border-black/20 py-5 active:border-teal-400"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -119,7 +104,10 @@ const AuthForm = <T extends FieldValues>({
             />
           ))}
 
-          <Button type="submit" className="form-btn cursor-pointer">
+          <Button
+            type="submit"
+            className="w-full text-xl font-normal py-5 shadow-md"
+          >
             {isSignIn ? "Sign In" : "Sign Up"}
           </Button>
         </form>

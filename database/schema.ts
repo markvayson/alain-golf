@@ -7,6 +7,8 @@ import {
   date,
   timestamp,
   pgTable,
+  numeric,
+  doublePrecision,
 } from "drizzle-orm/pg-core";
 
 export const STATUS_ENUM = pgEnum("status", [
@@ -26,4 +28,14 @@ export const users = pgTable("users", {
   role: ROLE_ENUM("role").default("USER"),
   lastActivityDate: date("last_activity_date").defaultNow(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+export const rates = pgTable("greenfee", {
+  id: uuid("id").notNull().primaryKey().unique(),
+  courseType: varchar({ length: 50 }).notNull(),
+  category: varchar({ length: 50 }).notNull(),
+  weekday9h: doublePrecision().notNull(),
+  weekday18h: doublePrecision().notNull(),
+  weekend9h: doublePrecision().notNull(),
+  weekend18h: doublePrecision().notNull(),
 });

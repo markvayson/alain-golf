@@ -30,3 +30,12 @@ export const contactSchema = z.object({
     .optional(),
   comment: z.string().trim().min(3).optional(),
 });
+
+export const ratesSchema = z.object({
+  courseType: z.string().trim().min(2).max(100),
+  category: z.string().trim().min(2).max(100),
+  weekday9h: z.coerce.number(),
+  weekday18h: z.coerce.number(),
+  weekend9h: z.coerce.number(),
+  weekend18h: z.coerce.number(),
+});

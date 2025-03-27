@@ -6,10 +6,9 @@ import React from "react";
 import { cn, getInitials } from "@/lib/utils";
 import { Session } from "next-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { signOut } from "@/auth";
 import { handleSignOut } from "@/lib/actions/auth";
-import SignButton from "./SignButton";
 import { Logo } from "./Svg";
+import Logout from "./Logout";
 
 const menuItems = [
   { name: "Services", href: "#services" },
@@ -50,9 +49,13 @@ export const Header = ({ session }: { session: Session | null }) => {
                   aria-label="home"
                   className="flex items-center justify-center order-2"
                 >
-                  <Logo />
-                  <p className="font-medium ">aesgc-golf</p>
+                  {isScrolled ? (
+                    <Logo className="object-contain w-18 h-18 relative" />
+                  ) : (
+                    "AESGC"
+                  )}
                 </Link>
+
                 <button
                   onClick={() => setMenuState(!menuState)}
                   aria-label={menuState == true ? "Close Menu" : "Open Menu"}
@@ -62,11 +65,12 @@ export const Header = ({ session }: { session: Session | null }) => {
                   <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
                 </button>
               </div>
-              <SignButton
-                type="SIGN_IN"
-                label="Login"
-                className="md:hidden text-sm"
-              />
+              <Link
+                href={session ? "/admin" : "/sign-in"}
+                className="text-sm gradient-btn md:hidden px-5 py-2 rounded-lg"
+              >
+                {session ? "Member Zone" : "Log In"}
+              </Link>
             </div>
 
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
@@ -100,49 +104,35 @@ export const Header = ({ session }: { session: Session | null }) => {
                   ))}
                 </ul>
               </div>
-              {session ? (
-                <div className="flex gap-2 justify-between flex-row-reverse md:flex-row ">
-                  <Avatar>
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                    />
-                    <AvatarFallback>
-                      {getInitials(session?.user?.name || "PP")}
-                    </AvatarFallback>
-                  </Avatar>
 
-                  <form
-                    className="mb-10"
-                    action={async () => handleSignOut({ redirectTo: "/" })}
+              <div className="hidden md:flex w-full text-sm items-center md:flex-row md:w-fit gap-5">
+                <Link
+                  href={session ? "/admin" : "/sign-in"}
+                  className="text-sm gradient-btn md:hidden px-5 py-2 rounded-lg"
+                >
+                  {session ? "Member Zone" : "Log In"}
+                </Link>
+                <Link
+                  href={session ? "/admin" : "/sign-in"}
+                  className=" gradient-btn py-4 px-8 rounded-lg"
+                >
+                  {session
+                    ? "Member Zone"
+                    : isScrolled
+                      ? "Get Started"
+                      : "Log in"}
+                </Link>
+                {!isScrolled && session ? (
+                  <Logout />
+                ) : session ? null : (
+                  <Link
+                    href="/sign-up"
+                    className="py-4 px-8 rounded-lg border-black/10 border "
                   >
-                    <Button
-                      variant="ghost"
-                      className="p-0 text-base font-normal cursor-pointer hover:underline"
-                      size="sm"
-                    >
-                      Logout
-                    </Button>
-                  </form>
-                </div>
-              ) : (
-                <div className="hidden md:flex w-full md:flex-row md:w-fit">
-                  <SignButton
-                    type="SIGN_IN"
-                    label={isScrolled ? "Get Started" : "Login"}
-                    className="hidden md:block"
-                  />
-                  <SignButton
-                    type="SIGN_UP"
-                    label="Sign Up"
-                    className={cn(
-                      isScrolled
-                        ? "hidden!"
-                        : "hidden md:block bg-none text-black hover:underline"
-                    )}
-                  />
-                </div>
-              )}
+                    Sign Up
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -154,7 +144,12 @@ export const Header = ({ session }: { session: Session | null }) => {
       >
         <div className="flex justify-around bg-white px-2 py-4  items-center ">
           <h1>Tee times are limited.</h1>
-          <SignButton type="SIGN_IN" label="Book Now!" className="" />
+          <Link
+            href="/sign-in"
+            className="gradient-btn px-4 md:px-5 py-3 md:py-4 rounded-lg text-sm md:text-base"
+          >
+            Book Now!
+          </Link>
         </div>
       </nav>
     </header>

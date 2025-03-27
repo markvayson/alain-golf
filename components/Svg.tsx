@@ -1,26 +1,11 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export const Logo = ({ className }: { className?: string }) => {
   return (
-    <svg
-      fill="#000000"
-      className={cn("size-8 w-8", className)}
-      viewBox="0 0 24 24"
-      id="golf-2"
-      data-name="Line Color"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        id="secondary"
-        d="M20,16.56c0-2-1.2-3.56-4.44-3.56-1.78,0-2.74.93-6.23.93C6.81,13.93,4,15,4,17.47,4,19.4,5.69,21,12,21,17.33,21,20,19.22,20,16.56Z"
-        className="fill-primary/50 stroke-primary stroke-2 stroke-custom"
-      ></path>
-      <path
-        id="primary"
-        d="M9,3V16M9,4v6l6-3Z"
-        className="fill-red-500 stroke-black stroke-2 stroke-custom"
-      ></path>
-    </svg>
+    <div className={className}>
+      <Image src="/logo.png" alt="logo" fill className={className} />
+    </div>
   );
 };
 

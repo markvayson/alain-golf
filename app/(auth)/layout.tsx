@@ -1,32 +1,19 @@
-import { auth } from "@/auth";
-import Image from "next/image";
-import { redirect } from "next/navigation";
+import { Logo } from "@/components/Svg";
+import Link from "next/link";
 import React, { ReactNode } from "react";
 
-const Layout = async ({ children }: { children: ReactNode }) => {
-  const session = await auth();
-
-  if (session) redirect("/");
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <main className="auth-container">
-      <section className="auth-form">
-        <div className="auth-box">
-          <div className="flex flex-row gap-3">
-            <Image src="/icons/logo.png" alt="logo" width={37} height={37} />
-            <h1 className="text-2xl font-semibold text-white">AESGC</h1>
-          </div>
-          <div>{children}</div>
+    <main className="flex min-h-screen bg-zinc-50 px-4  md:py-32 dark:bg-transparent">
+      <div className="max-w-92 m-auto h-fit w-full ">
+        <div className="p-6">
+          <Link href="/" aria-label="go home" className=" space-y-2 ">
+            <Logo className="size-12" />
+            <h1 className="text-4xl font-medium">Al Ain Golf Club</h1>
+          </Link>
+          <div className="mt-6">{children}</div>
         </div>
-      </section>
-      <section className="auth-illustration">
-        <Image
-          src="/images/auth-illustration.png"
-          height={1000}
-          width={1000}
-          alt="auth illustration"
-          className="size-full object-cover"
-        />
-      </section>
+      </div>
     </main>
   );
 };
