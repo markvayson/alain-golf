@@ -37,3 +37,21 @@ export const CourseDivider = ({ className }: { className?: string }) => {
     </div>
   );
 };
+export const RatesDivider = ({ className }: { className?: string }) => {
+  return (
+    <div className="absolute top-0 left-0 w-full overflow-hidden leading-0 rotate-180">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+        className="relative block w-[calc(100%+1.3px)]  md:h-[50px] rotate-x-180"
+      >
+        <path
+          d="M1200 0L0 0 892.25 114.72 1200 0z"
+          className={className}
+        ></path>
+      </svg>
+    </div>
+  );
+};

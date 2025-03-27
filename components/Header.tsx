@@ -49,9 +49,7 @@ export const Header = ({ session }: { session: Session | null }) => {
                   aria-label="home"
                   className="flex items-center justify-center order-2"
                 >
-                  
-                    <Logo className="object-contain w-12 h-12 relative" />
-                  
+                  <Logo className="object-contain w-12 h-12 relative" />
                 </Link>
 
                 <button
@@ -65,7 +63,7 @@ export const Header = ({ session }: { session: Session | null }) => {
               </div>
               <Link
                 href={session ? "/admin" : "/sign-in"}
-                className="text-sm gradient-btn md:hidden px-5 py-2 rounded-lg"
+                className="text-sm gradient-btn md:hidden px-5 py-3 rounded-lg"
               >
                 {session ? "Member Zone" : "Log In"}
               </Link>
@@ -121,15 +119,12 @@ export const Header = ({ session }: { session: Session | null }) => {
                       : "Log in"}
                 </Link>
                 {!isScrolled && !session ? (
-  <Link
-    href="/sign-up"
-    className="py-4 px-4 "
-  >
-    Sign Up
-  </Link>
-) : session ? (
-  <Logout />
-) : null}
+                  <Link href="/sign-up" className="py-4 px-4 ">
+                    Sign Up
+                  </Link>
+                ) : session ? (
+                  <Logout />
+                ) : null}
               </div>
             </div>
           </div>
