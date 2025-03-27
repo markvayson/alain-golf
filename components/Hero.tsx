@@ -4,12 +4,7 @@ import { IKImage } from "imagekitio-next";
 import { Session } from "next-auth";
 import { BookingCTA } from "./BookingCTA";
 
-const menuItems = [
-  { name: "Features", href: "#" },
-  { name: "Solution", href: "#" },
-  { name: "Pricing", href: "#" },
-  { name: "About", href: "#" },
-];
+
 
 export const HeroSection = ({ session }: { session: Session | null }) => {
   return (

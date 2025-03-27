@@ -41,7 +41,7 @@ export const Header = ({ session }: { session: Session | null }) => {
               "bg-white/70  md:max-w-4xl! rounded-2xl border-b   border-black/10! backdrop-blur-sm   lg:px-5"
           )}
         >
-          <div className="relative flex flex-wrap items-center justify-between gap-6 py-3  lg:gap-0 lg:py-4">
+          <div className="relative flex flex-wrap items-center justify-between gap-6   lg:gap-0 ">
             <div className="flex w-full justify-between lg:w-auto">
               <div className="flex flex-row justify-center gap-5 items-center">
                 <Link
@@ -49,11 +49,9 @@ export const Header = ({ session }: { session: Session | null }) => {
                   aria-label="home"
                   className="flex items-center justify-center order-2"
                 >
-                  {isScrolled ? (
-                    <Logo className="object-contain w-18 h-18 relative" />
-                  ) : (
-                    "AESGC"
-                  )}
+                  
+                    <Logo className="object-contain w-12 h-12 relative" />
+                  
                 </Link>
 
                 <button
@@ -114,7 +112,7 @@ export const Header = ({ session }: { session: Session | null }) => {
                 </Link>
                 <Link
                   href={session ? "/admin" : "/sign-in"}
-                  className=" gradient-btn py-4 px-8 rounded-lg"
+                  className=" gradient-btn py-4 px-4 rounded-lg"
                 >
                   {session
                     ? "Member Zone"
@@ -122,16 +120,16 @@ export const Header = ({ session }: { session: Session | null }) => {
                       ? "Get Started"
                       : "Log in"}
                 </Link>
-                {!isScrolled && session ? (
-                  <Logout />
-                ) : session ? null : (
-                  <Link
-                    href="/sign-up"
-                    className="py-4 px-8 rounded-lg border-black/10 border "
-                  >
-                    Sign Up
-                  </Link>
-                )}
+                {!isScrolled && !session ? (
+  <Link
+    href="/sign-up"
+    className="py-4 px-4 "
+  >
+    Sign Up
+  </Link>
+) : session ? (
+  <Logout />
+) : null}
               </div>
             </div>
           </div>

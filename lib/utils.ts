@@ -12,3 +12,10 @@ export const getInitials = (name: string): string =>
     .join("")
     .toUpperCase()
     .slice(0, 2);
+
+
+export const useRateStyle = (rate: number) => {
+  if(rate === 0) return 'Free';
+
+  return  `AED ${rate.toFixed(2)}`
+}
