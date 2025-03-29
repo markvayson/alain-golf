@@ -13,9 +13,18 @@ export const getInitials = (name: string): string =>
     .toUpperCase()
     .slice(0, 2);
 
+export const useRateStyle = (
+  selectedDay: string,
+  rate: Rate,
+  holes: number
+) => {
+  if (!rate) return;
+  let r;
+  if (selectedDay === "Weekdays") {
+    r = holes === 9 ? rate.weekday9h : rate.weekday18h;
+  } else r = holes === 9 ? rate.weekend9h : rate.weekend18h;
 
-export const useRateStyle = (rate: number) => {
-  if(rate === 0) return 'Free';
+  if (r === 0) return "Free";
 
-  return  `AED ${rate.toFixed(2)}`
-}
+  return `AED ${r.toFixed(2)}`;
+};

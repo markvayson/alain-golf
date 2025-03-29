@@ -154,6 +154,22 @@ export const golfButtons = [
   { label: "Become a Member", isDialog: true },
 ];
 
+export const menuItems = [
+  { name: "Services", href: "#services" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Team", href: "#team" },
+  { name: "Contact Us", href: "#contactus" },
+];
+
+export const mobileCourseTypes = [
+  "Championship Course Weekdays",
+  "Championship Course Weekends",
+  "Championship Course Holidays",
+  "Academy Course Weekdays",
+  "Academy Course Weekends",
+  "Academy Course Holidays",
+];
+
 export const golfClubSections: SectionProps[] = [
   {
     title: "⛳ 18-Hole Championship Course",

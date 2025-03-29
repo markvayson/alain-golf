@@ -89,6 +89,7 @@ const AuthForm = <T extends FieldValues>({
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id={field.name}
                       required
                       type={FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                       placeholder={`Enter your ${

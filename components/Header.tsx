@@ -9,13 +9,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { handleSignOut } from "@/lib/actions/auth";
 import { Logo } from "./Svg";
 import Logout from "./Logout";
-
-const menuItems = [
-  { name: "Services", href: "#services" },
-  { name: "Membership", href: "#membership" },
-  { name: "Team", href: "#team" },
-  { name: "Contact Us", href: "#contactus" },
-];
+import Image from "next/image";
+import logo from "@/public/logo.png";
+import { menuItems } from "@/app/constants";
 
 export const Header = ({ session }: { session: Session | null }) => {
   const [menuState, setMenuState] = React.useState(false);
@@ -49,7 +45,14 @@ export const Header = ({ session }: { session: Session | null }) => {
                   aria-label="home"
                   className="flex items-center justify-center order-2"
                 >
-                  <Logo className="object-contain w-12 h-12 relative" />
+                  <Image
+                    src={logo}
+                    alt="logo"
+                    width={40}
+                    height={40}
+                    priority
+                    className="w-auto h-auto"
+                  />
                 </Link>
 
                 <button
@@ -120,7 +123,7 @@ export const Header = ({ session }: { session: Session | null }) => {
                 </Link>
                 {!isScrolled && !session ? (
                   <Link href="/sign-up" className="py-4 px-4 ">
-                    Sign Up
+                    Sign up
                   </Link>
                 ) : session ? (
                   <Logout />

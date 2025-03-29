@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Facebook, Instagram, Logo, WhatsApp } from "./Svg";
 import { JSX } from "react";
+import logo from "@/public/logo.png";
+import Image from "next/image";
 
 const links = [
   {
@@ -43,7 +45,14 @@ export const Footer = () => {
       <div className="mx-auto max-w-5xl px-6">
         <div className=" flex  items-center justify-center gap-6 text-sm">
           <Link href="/" aria-label="go home" className="">
-            <Logo className="w-12 h-8 size-6 relative" />
+            <Image
+              src={logo}
+              alt="logo"
+              width={120}
+              height={120}
+              loading="lazy"
+              className="w-auto h-auto"
+            />
           </Link>
           {socialMedia.map((web, i) => (
             <Link

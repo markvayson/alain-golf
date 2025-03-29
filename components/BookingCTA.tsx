@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Circle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/popover";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { CircleSpinner } from "./Svg";
 
 const FormSchema = z.object({
   dob: z.date({
@@ -93,11 +94,16 @@ export const BookingCTA = () => {
           )}
         />
         <Button type="submit" className="md:rounded-l-none" disabled={disabled}>
-          {isLoading
-            ? "Loading..."
-            : disabled
-              ? "Please select a date"
-              : "Check Availability"}
+          {isLoading ? (
+            <>
+              Please Wait
+              <CircleSpinner />
+            </>
+          ) : disabled ? (
+            "Please select a date"
+          ) : (
+            "Check Availability"
+          )}
         </Button>
       </form>
     </Form>

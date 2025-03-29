@@ -1,12 +1,25 @@
 "use client";
-import config from "@/lib/config";
-import { IKImage } from "imagekitio-next";
 import { Session } from "next-auth";
 import { BookingCTA } from "./BookingCTA";
+import hero from "@/public/Hero.jpeg";
+import Image from "next/image";
 
 export const HeroSection = ({ session }: { session: Session | null }) => {
   return (
     <section className="overflow-hidden select-none relative ">
+      <div className="absolute inset-0  lg:col-span-3 rounded-3xl  ">
+        <div className="relative w-screen h-screen">
+          <div className="bg-radial-[at_65%_25%] md:bg-radial-[at_60%_45%] to-background z-1 -inset-32 absolute from-transparent to-40% " />
+
+          <Image
+            src={hero}
+            priority
+            alt="hero background"
+            fill
+            placeholder="blur"
+          />
+        </div>
+      </div>
       <div className=" mx-auto max-w-5xl px-6 py-28 lg:py-20 ">
         <div className="lg:flex lg:items-center lg:gap-12">
           <div className="relative z-10 mx-auto max-w-xl lg:ml-0 lg:w-1/2 ">
@@ -26,21 +39,6 @@ export const HeroSection = ({ session }: { session: Session | null }) => {
               exceptional golf!
             </p>
             <BookingCTA />
-          </div>
-        </div>
-        <div className="absolute inset-0 ro lg:col-span-3unded-3xl  ">
-          <div className="relative">
-            <div className="bg-radial-[at_65%_25%] md:bg-radial-[at_60%_45%] to-background z-1 -inset-32 absolute from-transparent to-40% "></div>
-            <IKImage
-              urlEndpoint={config.env.imagekit.urlEndpoint}
-              path="Hero"
-              alt="Landing Page Background"
-              priority
-              quality={80}
-              width={1920}
-              height={920}
-              lqip={{ active: true, quality: 20 }}
-            />
           </div>
         </div>
       </div>
