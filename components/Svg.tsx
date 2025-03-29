@@ -4,7 +4,7 @@ import Image from "next/image";
 export const Logo = ({ className }: { className?: string }) => {
   return (
     <div className={className}>
-      <Image src="/logo.png" alt="logo" fill className={className} />
+      <Image src="/logo.png" alt="logo" fill className={className} priority />
     </div>
   );
 };
