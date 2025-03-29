@@ -2,7 +2,7 @@ import { auth } from "@/auth";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroSection from "@/components/Hero";
-import PricingComparator from "@/components/pricing-comparator";
+import PricingComparator, { RatesSection } from "@/components/Rates";
 import { db } from "@/database/drizzle";
 import { rates } from "@/database/schema";
 import React from "react";
@@ -16,7 +16,7 @@ const Page = async () => {
     <>
       <Header session={session} />
       <HeroSection session={session} />
-      <PricingComparator rates={latestRates} />
+      <RatesSection rates={latestRates} />
       <Footer />
     </>
   );
