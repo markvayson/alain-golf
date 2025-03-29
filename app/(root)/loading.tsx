@@ -1,15 +1,16 @@
+import { LoadSpinner, Logo } from "@/components/Svg";
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
 const Loading = () => {
   return (
-    <div className="flex flex-col space-y-3">
-      <Skeleton className="h-[125px] w-[250px] rounded-xl bg-red-300" />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-[250px]" />
-        <Skeleton className="h-4 w-[200px]" />
-      </div>
-    </div>
+    <main className="w-screen h-screen gap-5 flex  flex-col items-center justify-center overflow-hidden">
+      <Logo className='w-48 h-28 md:w-62 md:h-38 relative' />
+      
+ 
+        <LoadSpinner /> 
+
+    </main>
   );
 };
 

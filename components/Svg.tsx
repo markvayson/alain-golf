@@ -65,3 +65,24 @@ export const WhatsApp = () => (
     </g>
   </svg>
 );
+
+
+export const LoadSpinner = () => (
+
+
+
+  <div className="dots-container flex items-center gap-2">
+    {[...Array(3)].map((_, index) =>
+
+    
+    {   const animationDelay = index === 0 ? '-0.32s' : index === 1 ? '-0.16s' : '0s'; return ( <div key={index} 
+
+      style={{
+        animationDelay: animationDelay, // Dynamically set animation delay
+      }}
+      className={`dot w-2 h-2 rounded-full animate-bounce border border-green-800 dark:bg-purple-400`}></div>
+      )}  )}
+   </div>
+)
+
+
