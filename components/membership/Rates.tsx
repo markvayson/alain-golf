@@ -7,23 +7,22 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from "../ui/select";
 import { Download } from "lucide-react";
-import DownloadButton from "./DownloadButton";
+import DownloadButton from "../DownloadButton";
 import { mobileCourseTypes } from "@/app/constants";
-import { CircleSpinner } from "./Svg";
+import { CircleSpinner } from "../Svg";
 import Link from "next/link";
 
 export const RatesSection = ({ rates }: { rates: Rate[] }) => {
   if (!rates) return;
   const [courseType, setCourseType] = useState<string>(rates[0].courseType);
   const [selectedDay, setselectedDay] = useState<string>("Weekdays");
-  const [isLoading, setisLoading] = useState<boolean>(false);
   const courseTypes = Array.from(new Set(rates.map((item) => item.courseType)));
 
   const handleChange = (value: string, mobile: boolean) => {
-    setisLoading(true);
-    setTimeout(() => {
+
+  
       if (mobile) {
         const lastSpaceIndex = value.lastIndexOf(" ");
         const newCourseType = value.substring(0, lastSpaceIndex);
@@ -34,8 +33,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
       } else {
         setCourseType(value);
       }
-      setisLoading(false);
-    }, 150);
+   
   };
 
   return (
@@ -101,15 +99,8 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                   </th>
                 </tr>
               </thead>
-              {isLoading ? (
-                <tbody className="bg-white ">
-                  <th colSpan={3} className="">
-                    <div className="flex justify-center items-center  p-4">
-                      <CircleSpinner className="w-8 h-8 " />
-                    </div>
-                  </th>
-                </tbody>
-              ) : (
+           
+             
                 <tbody className="">
                   {rates
                     .filter((f) => f.courseType === courseType)
@@ -130,7 +121,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                       </tr>
                     ))}
                 </tbody>
-              )}
+            
             </table>
           </div>
           {/* desktop */}
@@ -176,15 +167,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                 </tr>
               </thead>
 
-              {isLoading ? (
-                <tbody className="bg-white">
-                  <th colSpan={5} className="border-2 border-gray-200">
-                    <div className="flex justify-center items-center  py-24">
-                      <CircleSpinner className="w-8 h-8 " />
-                    </div>
-                  </th>
-                </tbody>
-              ) : (
+             
                 <tbody>
                   {rates
                     .filter((f) => f.courseType === courseType)
@@ -211,7 +194,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                       </tr>
                     ))}
                 </tbody>
-              )}
+     
             </table>
           </div>
           <Link

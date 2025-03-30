@@ -1,8 +1,11 @@
+'use client'
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export const VisitorComparison = () => {
+  const [isCouple, setIsCouple] = useState<boolean>(false)
   return (
     <section className="py-16 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
@@ -15,17 +18,21 @@ export const VisitorComparison = () => {
             entire to the APIs and platforms helping developers and businesses
             innovate.
           </p>
+          <Button variant={isCouple ? 'ghost' : 'default'} onClick={() => {setIsCouple(false)}} disabled={!isCouple}>Single</Button>
+          <Button variant={!isCouple ? 'ghost' : 'default'} onClick={() => {setIsCouple(true)}} disabled={isCouple}>Couple</Button>
         </div>
 
         <div className="mt-8 grid gap-6 md:mt-20 md:grid-cols-5 md:gap-0">
           <div className="rounded-(--radius) flex flex-col justify-between space-y-8 border p-6 md:col-span-2 md:my-2 md:rounded-r-none md:border-r-0 lg:p-10">
             <div className="space-y-4">
               <div>
-                <h2 className="font-medium">Silver Membership</h2>
+                <div className="flex flex-row">
+                  <h2 className="font-medium">Academy Membership</h2>
+               
+                </div>
                 <span className="my-3 block text-2xl font-semibold">
-                  AED700 / mo
-                </span>
-                <p className="text-muted-foreground text-sm">Per editor</p>
+                    AED{isCouple ? '700' : '400'}/mo
+                  </span>
               </div>
 
               <Button asChild variant="outline" className="w-full">
@@ -53,9 +60,9 @@ export const VisitorComparison = () => {
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="space-y-4">
                 <div>
-                  <h2 className="font-medium">Gold Membership</h2>
+                  <h2 className="font-medium">Championship Membership</h2>
                   <span className="my-3 block text-2xl font-semibold">
-                    AED1400 / mo
+                  AED{isCouple ? '1700' : '1400'}/mo
                   </span>
                   <p className="text-muted-foreground text-sm">Per editor</p>
                 </div>
@@ -67,12 +74,12 @@ export const VisitorComparison = () => {
 
               <div>
                 <div className="text-sm font-medium">
-                  Everything in Silver plus :
+                  Everything in Academy plus :
                 </div>
 
                 <ul className="mt-4 list-outside space-y-3 text-sm">
                   {[
-                    "Complimentary Green Fee (All Day)",
+                    "Complimentary Green Fee (Gold - All Day Silve)",
                     "5GB Cloud Storage",
                     "Email and Chat Support",
                     "Access to Community Forum",
