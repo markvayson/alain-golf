@@ -1,4 +1,4 @@
-import RatesSection from "@/components/membership/Rates";
+import RatesSection from "@/components/landingpage/RatesSection";
 import { db } from "@/database/drizzle";
 import { rates } from "@/database/schema";
 import React from "react";

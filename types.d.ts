@@ -39,3 +39,20 @@ interface Rate {
   weekend9h: number;
   weekend18h: number;
 }
+
+type Pricing = {
+  full_year: number;
+  pro_rata: Record<string, number>;
+};
+
+type MembershipOption = {
+  title: string;
+  pricing: Pricing;
+};
+
+type MembershipCategory = {
+  category: string;
+  description: string;
+  benefits: string[];
+  options: MembershipOption[];
+};

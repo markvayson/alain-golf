@@ -28,3 +28,35 @@ export const useRateStyle = (
 
   return `AED ${r.toFixed(2)}`;
 };
+
+export const setMembership = (
+  memberships: MembershipCategory[],
+  category: string,
+  isCouple: boolean
+) => {
+  const membership = memberships.find(
+    (membership) => membership.category === category
+  );
+
+  const price = membership?.options
+    .filter((option) =>
+      isCouple
+        ? option.title.includes("Couple")
+        : option.title.includes("Single")
+    )
+    .map((option) => option.pricing?.full_year);
+
+  const benefits = membership?.options
+    .filter((option) =>
+      isCouple
+        ? option.title.includes("Couple")
+        : option.title.includes("Single")
+    )
+    .map((option) => option.pricing?.full_year);
+
+  return {
+    category: membership?.category,
+    benefits: membership?.benefits,
+    price: price,
+  };
+};

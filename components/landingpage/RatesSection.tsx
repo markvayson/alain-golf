@@ -11,8 +11,10 @@ import {
 import { Download } from "lucide-react";
 import DownloadButton from "../DownloadButton";
 import { mobileCourseTypes } from "@/app/constants";
-import { CircleSpinner } from "../Svg";
+import { CircleSpinner, RateBottom, RateTop } from "../Svg";
 import Link from "next/link";
+import Image from "next/image";
+import background from "@/public/background.jpg";
 
 export const RatesSection = ({ rates }: { rates: Rate[] }) => {
   if (!rates) return;
@@ -21,19 +23,16 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
   const courseTypes = Array.from(new Set(rates.map((item) => item.courseType)));
 
   const handleChange = (value: string, mobile: boolean) => {
+    if (mobile) {
+      const lastSpaceIndex = value.lastIndexOf(" ");
+      const newCourseType = value.substring(0, lastSpaceIndex);
+      const newSelectedDay = value.substring(lastSpaceIndex + 1);
 
-  
-      if (mobile) {
-        const lastSpaceIndex = value.lastIndexOf(" ");
-        const newCourseType = value.substring(0, lastSpaceIndex);
-        const newSelectedDay = value.substring(lastSpaceIndex + 1);
-
-        setCourseType(newCourseType);
-        setselectedDay(newSelectedDay);
-      } else {
-        setCourseType(value);
-      }
-   
+      setCourseType(newCourseType);
+      setselectedDay(newSelectedDay);
+    } else {
+      setCourseType(value);
+    }
   };
 
   return (
@@ -41,6 +40,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
       id="#rates"
       className="py-16 md:py-32 from-green-300 to-green-500 bg-gradient-to-br select-none relative min-h-screen"
     >
+      <RateTop />
       <div className="mx-auto max-w-5xl px-6 relative">
         <div className="md:grid gap-5 flex flex-col items-center">
           <div className="flex justify-between  items-end gap-5">
@@ -80,14 +80,16 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                 ))}
               </SelectContent>
             </Select>
-            <table className="table-fixed w-full relative">
-              <caption className="caption-bottom text-sm mt-2">
-                *All Championship course green fees are applicable for an
-                AED10.50 EGF development fee if golfer is not an Emirates Golf
-                Federation member
-              </caption>
+            <table className="table-fixed w-full relative z-10">
+              <Image
+                src={background}
+                fill
+                className="object-cover -z-10"
+                alt="background"
+              />
+
               <thead>
-                <tr className="border-b-4 border-x-2 border-double  border-gray-200 bg-gray-100 text-xs ">
+                <tr className="border-b-4 border-x-2 border-double  border-gray-200  text-xs ">
                   <th className=" pl-4 py-2 text-left whitespace-nowrap w-2/5  ">
                     Player Type
                   </th>
@@ -99,39 +101,39 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                   </th>
                 </tr>
               </thead>
-           
-             
-                <tbody className="">
-                  {rates
-                    .filter((f) => f.courseType === courseType)
-                    .map((rate, i) => (
-                      <tr
-                        key={i}
-                        className="border border-gray-200 my-5 bg-white even:bg-gray-100"
-                      >
-                        <th className=" pl-4 py-2 font-medium text-gray-900 text-left  text-sm w-1/2 whitespace-nowrap">
-                          {rate.category}
-                        </th>
-                        <td className="px-2 text-center text-sm  ">
-                          {useRateStyle(selectedDay, rate, 9)}
-                        </td>
-                        <td className=" px-2 py-2 text-center text-sm ">
-                          {useRateStyle(selectedDay, rate, 18)}
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-            
+
+              <tbody className="">
+                {rates
+                  .filter((f) => f.courseType === courseType)
+                  .map((rate, i) => (
+                    <tr
+                      key={i}
+                      className="border border-gray-200 my-5  even:bg-gray-100/50"
+                    >
+                      <th className=" pl-4 py-2 font-medium text-gray-900 text-left  text-sm w-1/2 whitespace-nowrap">
+                        {rate.category}
+                      </th>
+                      <td className="px-2 text-center text-sm  ">
+                        {useRateStyle(selectedDay, rate, 9)}
+                      </td>
+                      <td className=" px-2 py-2 text-center text-sm ">
+                        {useRateStyle(selectedDay, rate, 18)}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
             </table>
           </div>
           {/* desktop */}
           <div className="mt-5 hidden md:block">
-            <table className="table-fixed w-full">
-              <caption className="caption-bottom text-sm mt-2">
-                *All Championship course green fees are applicable for an
-                AED10.50 EGF development fee if golfer is not an Emirates Golf
-                Federation member
-              </caption>
+            <table className="table-fixed w-full relative z-10">
+              <Image
+                src={background}
+                fill
+                className="object-cover -z-10"
+                alt="background"
+              />
+
               <thead>
                 <tr className=" bg-gray-100 text-sm border-t-2  ">
                   <th className="w-2/5  pl-4 py-2 text-left border-x-2">
@@ -158,7 +160,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                     Weekends / Public Holidays
                   </th>
                 </tr>
-                <tr className="border-t-0 border-b-4  border-double  border-gray-200 bg-gray-100 text-sm ">
+                <tr className="border-t-0 border-b-4  border-double  border-gray-200  text-sm ">
                   <th className="pl-4 text-left border-x-2">Player Types</th>
                   <th className="border-x-2">9 holes</th>
                   <th className="border-x-2">18 holes</th>
@@ -167,34 +169,32 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                 </tr>
               </thead>
 
-             
-                <tbody>
-                  {rates
-                    .filter((f) => f.courseType === courseType)
-                    .map((rate, i) => (
-                      <tr
-                        key={i}
-                        className="border bg-white even:bg-gray-100 border-gray-200 my-5 hover:bg-gray-200 transition-all duration-100"
-                      >
-                        <th className="border-x-2  pl-4 py-4 font-medium text-gray-900 text-left  text-sm w-1/2 whitespace-nowrap">
-                          {rate.category}
-                        </th>
-                        <td className="border-x-2 px-4 text-center text-sm whitespace-nowrap  ">
-                          {useRateStyle("Weekdays", rate, 9)}
-                        </td>
-                        <td className="border-x-2  px-4 py-4 text-center text-sm whitespace-nowrap ">
-                          {useRateStyle("Weekdays", rate, 18)}
-                        </td>
-                        <td className="border-x-2 px-4 text-center text-sm whitespace-nowrap  ">
-                          {useRateStyle("Weekends", rate, 9)}
-                        </td>
-                        <td className="border-x-2  px-4 py-4 text-center text-sm whitespace-nowrap ">
-                          {useRateStyle("Weekends", rate, 18)}
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-     
+              <tbody>
+                {rates
+                  .filter((f) => f.courseType === courseType)
+                  .map((rate, i) => (
+                    <tr
+                      key={i}
+                      className="border  even:bg-gray-100/50 border-gray-200 my-5 hover:bg-gray-200 transition-all duration-100"
+                    >
+                      <th className="border-x-2  pl-4 py-4 font-medium text-gray-900 text-left  text-sm w-1/2 whitespace-nowrap">
+                        {rate.category}
+                      </th>
+                      <td className="border-x-2 px-4 text-center text-sm whitespace-nowrap  ">
+                        {useRateStyle("Weekdays", rate, 9)}
+                      </td>
+                      <td className="border-x-2  px-4 py-4 text-center text-sm whitespace-nowrap ">
+                        {useRateStyle("Weekdays", rate, 18)}
+                      </td>
+                      <td className="border-x-2 px-4 text-center text-sm whitespace-nowrap  ">
+                        {useRateStyle("Weekends", rate, 9)}
+                      </td>
+                      <td className="border-x-2  px-4 py-4 text-center text-sm whitespace-nowrap ">
+                        {useRateStyle("Weekends", rate, 18)}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
             </table>
           </div>
           <Link
@@ -205,6 +205,8 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
           </Link>
         </div>
       </div>
+
+      <RateBottom />
     </section>
   );
 };
