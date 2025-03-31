@@ -13,11 +13,11 @@ const Page = async () => {
 
   return (
     <>
-      {/* <HeroSection session={session} />
+      <HeroSection session={session} />
       <RatesSection rates={latestRates} />
       <MembershipSection />
-      <TeamSection /> */}
-      <LocationSection />
+      <TeamSection />
+      {/* <LocationSection /> */}
     </>
   );
 };
