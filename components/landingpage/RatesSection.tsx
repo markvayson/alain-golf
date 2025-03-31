@@ -37,7 +37,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
 
   return (
     <section
-      id="#rates"
+      id="rates"
       className="py-16 md:py-32 from-green-300 to-green-500 bg-gradient-to-b select-none relative min-h-screen"
     >
       <TopDivider />

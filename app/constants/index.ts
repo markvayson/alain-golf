@@ -22,9 +22,9 @@ export const FIELD_TYPES = {
 
 export const menuItems = [
   { name: "Services", href: "#services" },
-  { name: "Pricing", href: "/pricing" },
+  { name: "Pricing", href: "#rates" },
   { name: "Team", href: "#team" },
-  { name: "Contact Us", href: "#contactus" },
+  { name: "Location", href: "#location" },
 ];
 
 export const mobileCourseTypes = [

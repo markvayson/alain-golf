@@ -3,7 +3,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
-import Header from "@/components/Header";
+import Header from "@/components/landingpage/Header";
 import Footer from "@/components/Footer";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";

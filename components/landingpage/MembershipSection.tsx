@@ -24,7 +24,7 @@ export const MembershipSection = () => {
   );
 
   return (
-    <section className="py-16 md:py-32">
+    <section id="membership" className="py-16 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
         <div className="mx-auto max-w-2xl space-y-6 text-center">
           <h1 className="text-center text-4xl font-semibold lg:text-5xl">

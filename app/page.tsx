@@ -5,6 +5,7 @@ import MembershipSection from "@/components/landingpage/MembershipSection";
 import { db } from "@/database/drizzle";
 import { rates } from "@/database/schema";
 import TeamSection from "@/components/landingpage/TeamSection";
+import LocationSection from "@/components/landingpage/LocationSection";
 
 const Page = async () => {
   const session = await auth();
@@ -12,10 +13,11 @@ const Page = async () => {
 
   return (
     <>
-      <HeroSection session={session} />
+      {/* <HeroSection session={session} />
       <RatesSection rates={latestRates} />
       <MembershipSection />
-      <TeamSection />
+      <TeamSection /> */}
+      <LocationSection />
     </>
   );
 };
