@@ -1,4 +1,5 @@
 import { BookingCTA } from "@/components/BookingCTA";
+import Maintenance from "@/components/Maintenance";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -16,9 +17,9 @@ const BookingPage = async ({
   }
 
   return (
-    <div>
-      <BookingCTA />
-    </div>
+    <main>
+      <Maintenance />
+    </main>
   );
 };
 

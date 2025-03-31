@@ -56,3 +56,10 @@ type MembershipCategory = {
   benefits: string[];
   options: MembershipOption[];
 };
+
+type Person = {
+  name: string;
+  role: string;
+  link: string;
+  avatar?: string | imageData;
+};

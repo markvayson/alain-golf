@@ -106,7 +106,7 @@ export const CircleSpinner = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export const RateTop = () => (
+export const TopDivider = () => (
   <div className="absolute top-0 left-0 w-full overflow-hidden leading-0 ">
     <svg
       data-name="Layer 1"
@@ -133,7 +133,7 @@ export const RateTop = () => (
   </div>
 );
 
-export const RateBottom = () => (
+export const BottomDivider = () => (
   <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0 rotate-180">
     <svg
       data-name="Layer 1"

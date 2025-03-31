@@ -11,7 +11,7 @@ import {
 import { Download } from "lucide-react";
 import DownloadButton from "../DownloadButton";
 import { mobileCourseTypes } from "@/app/constants";
-import { CircleSpinner, RateBottom, RateTop } from "../Svg";
+import { BottomDivider, TopDivider } from "../Svg";
 import Link from "next/link";
 import Image from "next/image";
 import background from "@/public/background.jpg";
@@ -38,9 +38,9 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
   return (
     <section
       id="#rates"
-      className="py-16 md:py-32 from-green-300 to-green-500 bg-gradient-to-br select-none relative min-h-screen"
+      className="py-16 md:py-32 from-green-300 to-green-500 bg-gradient-to-b select-none relative min-h-screen"
     >
-      <RateTop />
+      <TopDivider />
       <div className="mx-auto max-w-5xl px-6 relative">
         <div className="md:grid gap-5 flex flex-col items-center">
           <div className="flex justify-between  items-end gap-5">
@@ -64,12 +64,12 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
             </DownloadButton>
           </div>
           {/* mobile */}
-          <div className="relative mt-5 md:hidden">
+          <div className="relative mt-5 md:hidden rounded-md shadow-md overflow-hidden">
             <Select
               name="courseType"
               onValueChange={(value) => handleChange(value, true)}
             >
-              <SelectTrigger className=" w-full  cursor-pointer  bg-gray-100  *:text-black font-bold px-4 py-0 rounded-none">
+              <SelectTrigger className=" w-full  border-none cursor-pointer  bg-gray-100  *:text-black font-bold px-4 py-0 rounded-none">
                 <SelectValue placeholder={mobileCourseTypes[0]} />
               </SelectTrigger>
               <SelectContent>
@@ -80,60 +80,60 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                 ))}
               </SelectContent>
             </Select>
-            <table className="table-fixed w-full relative z-10">
+            <div className="z-10 relative ">
               <Image
                 src={background}
                 fill
                 className="object-cover -z-10"
                 alt="background"
               />
+              <table className="table-fixed w-full">
+                <thead>
+                  <tr className="border-b-4 border-t-0 border-x-2 border-double bg-gray-100 border-gray-200  text-xs ">
+                    <th className=" pl-4 py-2 text-left whitespace-nowrap w-2/5  ">
+                      Player Type
+                    </th>
+                    <th className="px-2 py-2 text-center text-xs w-1/6">
+                      9 Holes
+                    </th>
+                    <th className="px-2 py-2 text-center text-xs w-1/6  ">
+                      18 Holes
+                    </th>
+                  </tr>
+                </thead>
 
-              <thead>
-                <tr className="border-b-4 border-x-2 border-double  border-gray-200  text-xs ">
-                  <th className=" pl-4 py-2 text-left whitespace-nowrap w-2/5  ">
-                    Player Type
-                  </th>
-                  <th className="px-2 py-2 text-center text-xs w-1/6">
-                    9 Holes
-                  </th>
-                  <th className="px-2 py-2 text-center text-xs w-1/6  ">
-                    18 Holes
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody className="">
-                {rates
-                  .filter((f) => f.courseType === courseType)
-                  .map((rate, i) => (
-                    <tr
-                      key={i}
-                      className="border border-gray-200 my-5  even:bg-gray-100/50"
-                    >
-                      <th className=" pl-4 py-2 font-medium text-gray-900 text-left  text-sm w-1/2 whitespace-nowrap">
-                        {rate.category}
-                      </th>
-                      <td className="px-2 text-center text-sm  ">
-                        {useRateStyle(selectedDay, rate, 9)}
-                      </td>
-                      <td className=" px-2 py-2 text-center text-sm ">
-                        {useRateStyle(selectedDay, rate, 18)}
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+                <tbody className="">
+                  {rates
+                    .filter((f) => f.courseType === courseType)
+                    .map((rate, i) => (
+                      <tr
+                        key={i}
+                        className="border border-gray-200 my-5  even:bg-gray-100/50"
+                      >
+                        <th className=" pl-4 py-2 font-medium text-gray-900 text-left  text-sm w-1/2 whitespace-nowrap">
+                          {rate.category}
+                        </th>
+                        <td className="px-2 text-center text-sm  ">
+                          {useRateStyle(selectedDay, rate, 9)}
+                        </td>
+                        <td className=" px-2 py-2 text-center text-sm ">
+                          {useRateStyle(selectedDay, rate, 18)}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           </div>
           {/* desktop */}
-          <div className="mt-5 hidden md:block">
-            <table className="table-fixed w-full relative z-10">
-              <Image
-                src={background}
-                fill
-                className="object-cover -z-10"
-                alt="background"
-              />
-
+          <div className="mt-5 hidden md:block  relative z-10 overflow-hidden rounded-lg shadow-md">
+            <Image
+              src={background}
+              fill
+              className="object-cover -z-10"
+              alt="background"
+            />
+            <table className="table-fixed w-full">
               <thead>
                 <tr className=" bg-gray-100 text-sm border-t-2  ">
                   <th className="w-2/5  pl-4 py-2 text-left border-x-2">
@@ -160,8 +160,8 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                     Weekends / Public Holidays
                   </th>
                 </tr>
-                <tr className="border-t-0 border-b-4  border-double  border-gray-200  text-sm ">
-                  <th className="pl-4 text-left border-x-2">Player Types</th>
+                <tr className="bg-gray-100 border-t-0 border-b-4  border-double  border-gray-200  text-sm ">
+                  <th className="pl-4 text-left border-x-2">Player Type</th>
                   <th className="border-x-2">9 holes</th>
                   <th className="border-x-2">18 holes</th>
                   <th className="border-x-2">9 holes</th>
@@ -206,7 +206,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
         </div>
       </div>
 
-      <RateBottom />
+      <BottomDivider />
     </section>
   );
 };

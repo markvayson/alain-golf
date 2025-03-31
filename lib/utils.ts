@@ -60,3 +60,14 @@ export const setMembership = (
     price: price,
   };
 };
+
+export const getCurrentDate = () => {
+  const currentDate = new Date();
+  return currentDate
+    .toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    })
+    .replace(/\//g, "");
+};

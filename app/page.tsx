@@ -1,12 +1,10 @@
 import { auth } from "@/auth";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import HeroSection from "@/components/landingpage/HeroSection";
 import RatesSection from "@/components/landingpage/RatesSection";
-import VisitorComparison from "@/components/landingpage/MembershipSection";
+import MembershipSection from "@/components/landingpage/MembershipSection";
 import { db } from "@/database/drizzle";
 import { rates } from "@/database/schema";
-import React, { Suspense } from "react";
+import TeamSection from "@/components/landingpage/TeamSection";
 
 const Page = async () => {
   const session = await auth();
@@ -16,7 +14,8 @@ const Page = async () => {
     <>
       <HeroSection session={session} />
       <RatesSection rates={latestRates} />
-      <VisitorComparison />
+      <MembershipSection />
+      <TeamSection />
     </>
   );
 };
