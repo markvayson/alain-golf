@@ -118,15 +118,13 @@ export const memberships: MembershipCategory[] = [
     category: "Academy Membership",
     description: "Access to academy courses and training sessions.",
     benefits: [
-      "Unlimited access to academy courses",
-      "Unlimited range balls",
-      "Discounted championship green fees",
-      "Discounted lesson rates",
-      "Academy event reduced fee",
-      "Discounts on pro shop items",
-      "Discounts on restaurants",
-      "Free Membership Passes",
-      "Free Lesson Vouchers",
+      "Complimentary green fess on the Academy courses",
+      "Complimentary use of the club practice facilities",
+      "Members discount on Golf Shop purchases",
+      "Members golf lesson tariff",
+      "Academy members green fee rate on Championship Course.",
+      "1 x 30 minute golf lesson voucher to be used with any of our Porfessionals",
+      "Green Fee passes for members guest to play on the Academy Course"
     ],
     options: [
       {

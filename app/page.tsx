@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import HeroSection from "@/components/landingpage/HeroSection";
 import RatesSection from "@/components/landingpage/RatesSection";
+import EventsSection from "@/components/landingpage/EventsSection";
 import MembershipSection from "@/components/landingpage/MembershipSection";
 import { db } from "@/database/drizzle";
 import { rates } from "@/database/schema";
@@ -14,10 +15,11 @@ const Page = async () => {
   return (
     <>
       <HeroSection session={session} />
+      {/* <EventsSection /> */}
       <RatesSection rates={latestRates} />
       <MembershipSection />
       <TeamSection />
-      {/* <LocationSection /> */}
+      <LocationSection />
     </>
   );
 };
