@@ -1,5 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
-import { format } from "date-fns";
+import { format, isSameMonth, parseISO } from "date-fns";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -75,8 +75,29 @@ export const getCurrentDate = () => {
 
 export const formatEventDate = (dateString: string) => {
   const date = new Date(dateString);
-  const day = format(date, 'dd'); 
-  const month = format(date, 'MMM');
+  const day = format(date, "dd");
+  const month = format(date, "MMM");
 
-  return {day, month}
-}
+  return { day, month };
+};
+
+export const eventCalendar = (
+  events: EventType[],
+  month: Date
+): Map<string, { color: string; name: string }[]> => {
+  const filteredEvents: EventType[] = events.filter((event) =>
+    isSameMonth(parseISO(event.date), month)
+  );
+
+  const eventMap = new Map<string, { color: string; name: string }[]>();
+
+  filteredEvents.forEach((event) => {
+    const date = format(parseISO(event.date), "yyyy-MM-dd");
+    if (!eventMap.has(date)) {
+      eventMap.set(date, []);
+    }
+    eventMap.get(date)?.push({ color: event.color, name: event.name });
+  });
+
+  return eventMap;
+};

@@ -1,5 +1,3 @@
-
-
 interface AuthCredentials {
   fullName: string;
   email: string;
@@ -56,10 +54,8 @@ type EventType = {
   link: string;
   format: string;
   visitorsCanJoin: boolean;
-}
-
-
-
+  color: string;
+};
 
 type Person = {
   name: string;
