@@ -10,12 +10,12 @@ import LocationSection from "@/components/landingpage/LocationSection";
 
 const Page = async () => {
   const session = await auth();
-  const latestRates = await db.select().from(rates);
+  const latestRates = await db.select().from(rates);    
 
   return (
     <>
-      <HeroSection session={session} />
-      {/* <EventsSection /> */}
+      {/* <HeroSection session={session} /> */}
+      <EventsSection />
       <RatesSection rates={latestRates} />
       <MembershipSection />
       <TeamSection />

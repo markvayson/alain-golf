@@ -32,18 +32,17 @@ export const Header = ({ session }: { session: Session | null }) => {
       >
         <div
           className={cn(
-            "md:mx-auto  mt-2 mx-2 md:max-w-[100vw] max-w-2xl px-6 transition-all border-black/10 duration-300 lg:px-12 ",
+            "md:mx-auto shadow-xs bg-white   md:max-w-[100vw] max-w-2xl px-6 transition-all border-black/10 duration-300 lg:px-12 ",
             isScrolled &&
-              "bg-white/70  md:max-w-4xl! rounded-2xl border-b   border-black/10! backdrop-blur-sm   lg:px-5"
+              "shadow-sm"
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6   lg:gap-0 ">
             <div className="flex w-full justify-between lg:w-auto">
-              <div className="flex flex-row justify-center gap-5 items-center">
-                <Link
+              <Link
                   href="/"
                   aria-label="home"
-                  className="flex items-center justify-center order-2"
+                  className="flex items-center justify-center"
                 >
                   <Image
                     src={logo}
@@ -58,20 +57,20 @@ export const Header = ({ session }: { session: Session | null }) => {
                 <button
                   onClick={() => setMenuState(!menuState)}
                   aria-label={menuState == true ? "Close Menu" : "Open Menu"}
-                  className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden order-1"
+                  className="relative z-20   block cursor-pointer p-2.5 lg:hidden order-1"
                 >
                   <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
                   <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
                 </button>
-              </div>
-              <Link
+             
+              {/* <Link
                 href={session ? "/admin" : "/sign-in"}
                 className="text-sm gradient-btn md:hidden px-5 py-3 rounded-lg"
               >
                 {session ? "Member Zone" : "Log In"}
-              </Link>
+              </Link> */}
             </div>
-
+{/* desktop */}
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
               <ul className="flex gap-8 text-base">
                 {menuItems.map((item, index) => (
@@ -133,7 +132,7 @@ export const Header = ({ session }: { session: Session | null }) => {
           </div>
         </div>
       </nav>
-      <nav
+      {/* <nav
         className={`fixed bottom-0 min-w-[100vw] z-20 transition-all duration-300 ease-in-out 
           ${isScrolled ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}
         `}
@@ -147,7 +146,7 @@ export const Header = ({ session }: { session: Session | null }) => {
             Book Now!
           </Link>
         </div>
-      </nav>
+      </nav> */}
     </header>
   );
 };

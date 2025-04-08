@@ -38,6 +38,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en">
       <SessionProvider session={session}>
+      
         <body>
           <Header session={session} />
           {children}

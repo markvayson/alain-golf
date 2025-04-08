@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <div className="max-w-92 m-auto h-fit w-full ">
         <div className="p-6">
           <Link href="/" aria-label="go home" className=" space-y-2 ">
-            <Logo className="size-12" />
+            
             <h1 className="text-4xl font-medium">Al Ain Golf Club</h1>
           </Link>
           <div className="mt-6">{children}</div>

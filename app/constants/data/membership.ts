@@ -201,3 +201,7 @@ export const memberships: MembershipCategory[] = [
     ],
   },
 ];
+
+
+
+export default memberships;

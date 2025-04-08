@@ -1,15 +1,4 @@
-interface EventType {
-  id: number;
-  name: string;
-  type: string;
-  mode: string;
-  description: string;
-  status: string;
-  date: string;
-  holes: number;
-  image: string;
-  hasJoined: boolean;
-}
+
 
 interface AuthCredentials {
   fullName: string;
@@ -56,6 +45,21 @@ type MembershipCategory = {
   benefits: string[];
   options: MembershipOption[];
 };
+
+type EventType = {
+  name: string;
+  description: string;
+  date: string;
+  course: string;
+  holes: number;
+  method: string;
+  link: string;
+  format: string;
+  visitorsCanJoin: boolean;
+}
+
+
+
 
 type Person = {
   name: string;

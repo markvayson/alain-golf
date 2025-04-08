@@ -92,7 +92,7 @@ export const RatesSection = ({ rates }: { rates: Rate[] }) => {
                   <tr className="border-b-4 border-t-0 border-x-2 border-double bg-gray-100 border-gray-200  text-xs ">
                     <th className=" pl-4 py-2 text-left whitespace-nowrap w-2/5  ">
                       Player Type
-                    </th>
+                    </th> 
                     <th className="px-2 py-2 text-center text-xs w-1/6">
                       9 Holes
                     </th>

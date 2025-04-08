@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { memberships } from "@/app/constants/data/membership";
+import memberships from "@/app/constants/data/membership";
 import Image from "next/image";
 import background from "@/public/background.jpg";
 import { setMembership } from "@/lib/utils";
