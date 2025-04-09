@@ -49,7 +49,7 @@ type EventType = {
   description: string;
   date: string;
   course: string;
-  holes: number;
+  holes: string;
   method: string;
   link: string;
   format: string;

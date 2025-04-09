@@ -77,26 +77,29 @@ export const formatEventDate = (dateString: string) => {
   const date = new Date(dateString);
   const day = format(date, "dd");
   const month = format(date, "MMM");
+  const time = format(date, "HH:mm");
 
-  return { day, month };
+  return { day, month, time };
 };
 
 export const eventCalendar = (
   events: EventType[],
   month: Date
-): Map<string, { color: string; name: string }[]> => {
+): Map<string, { color: string; name: string; time: string }[]> => {
   const filteredEvents: EventType[] = events.filter((event) =>
     isSameMonth(parseISO(event.date), month)
   );
 
-  const eventMap = new Map<string, { color: string; name: string }[]>();
+  const eventMap = new Map<string, { color: string; name: string; time: string }[]>();
 
   filteredEvents.forEach((event) => {
-    const date = format(parseISO(event.date), "yyyy-MM-dd");
+    const eventDate = parseISO(event.date);
+    const date = format(eventDate, "yyyy-MMdd");
+    const time = format(eventDate, "HH:mm");
     if (!eventMap.has(date)) {
       eventMap.set(date, []);
     }
-    eventMap.get(date)?.push({ color: event.color, name: event.name });
+    eventMap.get(date)?.push({ color: event.color, name: event.name, time: time });
   });
 
   return eventMap;

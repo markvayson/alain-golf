@@ -12,6 +12,7 @@ import { format, parseISO } from "date-fns";
 
 import background from "@/public/background.jpg";
 import Image from "next/image";
+import { Clock, Gamepad, Gamepad2, LandPlot, MapPin } from "lucide-react";
 
 export const EventsSection = ({
   data,
@@ -40,7 +41,7 @@ export const EventsSection = ({
           </div>
           {data.map((event, i) => (
             <div key={i} className="flex flex-col w-full">
-              <div className="flex gap-5 py-4 px-2 hover:bg-gray-50 ">
+              <div className="flex gap-4 py-4 pr-4 hover:bg-gray-50 ">
                 <div className="flex flex-col items-center">
                   <h2 className="font-medium text-red-500">
                     {formatEventDate(event.date).month}
@@ -50,7 +51,27 @@ export const EventsSection = ({
                   </h3>
                 </div>
                 <div className="flex-1 flex flex-row">
-                  <div className="flex-1">
+                <div className='flex flex-col w-24 items-start text-sm justify-around'>
+                  {/* time */}
+                  <div className='flex flex-row items-center justify-center gap-2 pr-2'>
+                  <Clock size='16'/> 
+                  {event.method === 'shotgun' ? formatEventDate(event.date).time : 'All Day'}
+                 
+                  </div> 
+                   {/* type / method  */}
+                   <div className='flex flex-row items-center justify-center gap-2 pr-2'>
+                    <Gamepad2 size='16' />
+                    {event.method}
+                     </div>
+                  {/* course */} 
+                  <div className='flex flex-row items-center justify-center gap-2 pr-2'>
+                  <LandPlot size='16'/> 
+                  {event.holes}  
+                  </div> 
+                  
+                </div>
+                <Separator orientation='vertical' />
+                  <div className="flex-1 pl-4">
                     <h2 className="text-md font-semibold">{event.name}</h2>
                     <div className="flex flex-col text-sm text-gray-500">
                       <span>{event.format}</span>
@@ -73,6 +94,9 @@ export const EventsSection = ({
             </div>
           ))}
         </ScrollArea>
+
+
+        {/* calendar */}
         <div className="relative mx-auto max-w-5xl h-full  w-full  shadow-lg border rounded-xl p-2">
           <Image
             src={background}
